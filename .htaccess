@@ -1,0 +1,13 @@
+# A .env és a .env.example nem tölthető le
+<FilesMatch "^\.env">
+    Require all denied
+</FilesMatch>
+
+# SQL, Composer és szöveges fájlok sem
+<FilesMatch "\.(sql|json|lock|txt)$">
+    Require all denied
+</FilesMatch>
+
+# A vendor mappa és a generátor szkript sem érhető el böngészőből
+RedirectMatch 403 /vendor/
+RedirectMatch 403 /seed_products\.php$
